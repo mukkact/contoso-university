@@ -1,11 +1,11 @@
 name: Deploy Contoso_University_Core
 
 on:
-workflow_run:
-  workflows: ["Pack Contoso_University_Core"]
-  branches: [main]
-  types:
-  - completed
+  workflow_run:
+    workflows: ["Pack Contoso_University_Core"]
+    branches: [main]
+    types:
+    - completed
   workflow_dispatch:
 jobs:
   deploy:
@@ -15,11 +15,11 @@ jobs:
     steps:
       - uses: dawidd6/action-download-artifact@v2
         with:
-        workflow: pack-solution.yml
-        name: packed-solution
+          workflow: pack-solution.yml
+          name: packed-solution
       - uses: microsoft/powerplatform-actions/import-solution@v0
         with:
-        environment-url: ${{ secrets.URL }}
-        user-name: ${{ secrets.USERNAME }}
-        password-secret: ${{ secrets.PASSWORD }}
-        solution-file: contoso_university_core_managed.zip
+          environment-url: ${{ secrets.URL }}
+          user-name: ${{ secrets.USERNAME }}
+          password-secret: ${{ secrets.PASSWORD }}
+          solution-file: contoso_university_core_managed.zip
