@@ -11,7 +11,7 @@ jobs:
   deploy:
     runs-on: windows-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    environment: 'Contoso-PM'
+    environment: 'production'
     steps:
       - uses: dawidd6/action-download-artifact@v2
         with:
